@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<style type="text/css">
+ .select{background-color: red;}
+ .reverse{background: black; color: white;}
+</style>
+<script>
+
+$(document).ready(function() {
+	//$('h1').removeClass('select');
+	/* 
+	var src = $('img').attr('src');
+	alert(src);
+	*/
+	// $('img').attr('width',200);
+	/* 
+	$('img').attr('width',function(index){
+		return (index+1) * 100;
+	});
+	 *//* 
+	 
+	$('img').attr({width :function(index){
+		return (index+1) * 100;
+	},height: 100 });
+	 $('h1').css('color','red');
+	  */
+	  /* 
+	  var color = ['red','white','purple'];
+	  $('h1').css('color',function(index){
+			return color[index];
+		});
+	   */
+	   /* 
+	  var html = $('h1').html();
+	  alert(html);
+ */
+ /* 
+	var html = $('h1').text();
+	  alert(html);
+	   */
+	  
+	//$('div').html('<h1>$().html() Method</h1>');
+	//$('div').text('<h1>$().html() Method</h1>');
+	 /* 
+	$('div').html(function ( index) {
+		return '<h1>Header -' + index +'</h1>';
+	});
+	   */
+	/*    
+	$('h1').html(function ( index,html) {
+		return '★' +html+ '★';
+	}); 
+	   
+	$('h1').first().remove();
+	$('div').empty();
+	    */
+	    
+	//$('<h1></h1>').html('hello world..!').appendTo('body');
+	/*     
+	$('<img />'),{
+		src: 'Crhrysanthemum.jpg',
+		width: 350,
+		height: 250
+	}).appendTo('body');
+	 */
+/* 	
+
+var h1 = '<h1>Header1</h1>';
+	var h2 = '<h2>Header2</h2>';
+	$('body').append(h1,h2,h1,h2); 
+	*/
+/* 
+	var content = [
+        { name: '윤인성', region: '서울특별시 강서구' },
+        { name: '윤하린', region: '서울특별시 광진구' },
+        { name: '윤인아', region: '미국 메사추세츠' }
+    ];
+	$('div').append(function(index){
+		var item = content[index];
+		var output = '';
+		output += '<h1>' + item.name + '</h1>';
+		output += '<h2>' + item.region + '</h2>';
+		return output;
+	}); 
+	 */
+	 /* 
+	 $('img').css('width',100);
+	 
+	 setInterval(function (){
+		 $('img').first().appendTo('body');
+	 },2000);
+	  */
+	  
+	/// $('div').append($('h1'));
+	  
+	//$('div').append($('h1').clone());
+	/* 
+	$('h1').on('click',function() {
+		$(this).html(function (index, html) {
+			return html + '+';
+		});
+	});
+	 */
+	/* 
+	$('h1').on('click',function() {
+		$(this).html(function (index, html) {
+			return html + '+';
+		});
+	});
+	$('h1').on({
+		mouseenter: function () {$(this).addClass('reverse');},
+		mouseleave: function () {$(this).removeClass('reverse');},
+	});
+	 */
+	 
+/* 	$('h1').hover(function () {
+		$(this).addClass('reverse');
+	}, function ( ){
+		$(this).removeClass('reverse');
+	});
+	
+	 
+		
+	 $('h1').click(function () {
+		 $(this).html('CLICK');
+		 alert('이벤트가 발생했습니다.');
+		 $(this).off();
+	 });
+	
+	 */
+		/* 
+	 $('div').click(function () {
+		var header = $('h1',this).text();
+		var paragraph = $('p',this).text();
+		alert(header + '\n' + paragraph);
+	 });
+	 */
+/* 
+	 $('h1').on("click", function () {
+		alert('이벤트 발생');
+	 });
+	
+	 var canvas = document.getElementById('canvas');
+	 var context = canvas.getContext('2d');
+	 var out='';
+	 $(canvas).on({
+		 mousedown: function (event) {
+			 var position = $(this).offset();
+			 var x = event.pageX - position.left;
+			 var y = event.pageY - position.top;
+				out += x+","+y+"";
+				context.beginPath();
+				context.moveTo(x.y);
+		 },
+		 mouseup: function (event) {
+			 var position = $(this).offset();
+			 var x = event.pageX - position.left;
+			 var y = event.pageY - position.top;
+			 context.lineTo(x,y);
+				context.stroke(x.y);
+		 }
+	 });
+	  */
+	/* 
+	 $('h1').on("click", function () {
+			$(this).html(function (index,html){
+				return html + '★';
+			});
+		 });
+	  
+	  setInterval(function () {
+		  $('h1').last().trigger('click');
+	  },1000);
+	 */
+	 /* 
+	 $('h1').click(function (event, data1 , data2){
+		 alert(data1 + ' : ' + data2);
+	 });
+	 
+	 $('h1').eq(1).trigger('click',[273,52]);
+	  */
+	 
+	  /* 
+	  $('a').click(function(){
+		  $(this).css('background-color','blue');
+		  event.stopPropagation();
+		  event.preventDefault();
+	  });
+	  
+	  $('h1').click(function() {
+		  $(this).css('background-color','red');
+	  });	
+	   */
+	   /* 
+	   $('h1').click(function(){
+		 var length = $('h1').length;
+		 var targetHTML = $(this).html();
+		 $('#wrap').append('<h1>' + length + ' - ' + targetHTML + '</h1>');
+	   });
+	    */
+	    $('textarea').keyup(function () {
+	    	var input = $(this).val().length;
+	    	var remain = 150 - input;
+	    	
+	    	$('h1').html(remain);
+	    });
+});
+
+</script>
+<style type="text/css">
+
+*{
+margin: 5px; padding: 5px;
+border: 3px solid black;
+}
+/* 
+div{
+margin: 5px; padding: 3px;
+border: 3px sloid black;
+border-radius: 10px;
+} */
+</style>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p> 지금내생각을 </p> <h1>150</h1>
+<textarea cols="70" rows="5"></textarea>
+<!-- <div id="wrap"><h1> header</h1></div> -->
+<!-- <h1> <a href="http://hanb.co.kr" >hanb media</a></h1> -->
+
+<!-- <h1> start :</h1> <h1> start :</h1> -->
+
+<!-- <canvas id= "canvas" width="700" height="400" style="border: 3px solid black">
+asd
+</canvas> -->
+
+
+
+<!-- 
+<div>
+<h1>hhhhh</h1>
+<p>pppppp</p>
+</div>
+ -->
+<!-- 
+<div></div>
+<div></div>
+<div></div>
+ -->
+<!-- 
+<img src="a.jpg">
+<img src="b.jpg">
+<img src="c.jpg">
+ -->
+<!-- 
+<h1 class="item"> header - 0</h1>
+<h1 class="item select"> header - 1</h1>
+<h1 class="item"> header - 2</h1>
+  -->
+</body>
+</html>

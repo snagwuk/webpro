@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+
+<script type="text/javascript">
+	/*
+	 var arr = ['A','B','C','D'];
+	 var out = '';
+	 for(var i = 0; i < arr.length;i++)
+	 {
+	 out += i + ':' + arr[i] +'\n';
+	 }
+	 alert(out);
+
+	 var arr = [52,273,103,32];
+	 //arr.sort();
+	 //alert(arr);
+
+	 arr.sort(function(left,right){return left - right});
+
+	 alert(arr);
+
+	 
+	function Student(name, korean, math, english, science) {
+		// 속성
+		this.이름 = name;
+		this.국어 = korean;
+		this.수학 = math;
+		this.영어 = english;
+		this.과학 = science;
+
+		// 메서드
+		this.getSum = function() {
+			return this.국어 + this.수학 + this.영어 + this.과학;
+		};
+		this.getAverage = function() {
+			return this.getSum() / 4;
+		};
+		this.toString = function() {
+			return this.이름 + '\t' + this.getSum() + '\t' + this.getAverage();
+		};
+	}
+
+	// 학생 정보 배열을 만듭니다.
+	var students = [];
+	students.push(new Student('윤인성', 87, 98, 88, 95));
+	students.push(new Student('연하진', 92, 98, 96, 98));
+	students.push(new Student('구지연', 76, 96, 94, 90));
+	students.push(new Student('나선주', 98, 92, 96, 92));
+	students.push(new Student('윤아린', 95, 98, 98, 98));
+	students.push(new Student('윤명월', 64, 88, 92, 92));
+	students.push(new Student('김미화', 82, 86, 98, 88));
+	students.push(new Student('김연화', 88, 74, 78, 92));
+	students.push(new Student('박아현', 97, 92, 88, 95));
+	students.push(new Student('서준서', 45, 52, 72, 78));
+
+	students.sort(function(left, right) {
+		return right.getSum() - left.getSum();
+	});
+	students = students.slice(0, 3);
+
+	var out = '이름\t총점\t평균\n';
+	for ( var i in students) {
+		out += students[i].toString() + '\n';
+	}
+	//alert(out);
+	
+
+	///
+	
+	Array.prototype.remove = function(index)
+	{
+		this.splice(index,1);
+	}
+	
+	var array = [52,273,103,32,274,129];
+	
+	for(var i = 0 ; i < array.length; i++)
+		{
+		if(array[i] > 100)
+			{
+			array.remove(i);
+			}
+		}
+	
+	alert(array);
+	
+	
+	
+	Object.prototype.mysort = function()
+	{
+		for(var i = 0 ; i < this.length-1; i++)
+			{
+			for(var j =0 ; j < this.length-1;j++)
+				{
+				if(arguments[0](this[j], this[i]) > 0)
+					{
+					var t= this[j];
+					this[j] = this[j+1];
+					this[j+1] = t;
+					}
+				}
+			}
+	}
+	
+	var array = [52,273,103,32];
+	
+	array.mysort(function(left, right) {
+		return left - right;
+	});
+	alert(array);
+	
+	array.mysort(function(left, right) {
+		return right - left;
+	});
+	alert(array);
+
+	var date =  new Date('December 9');
+	alert(date);
+	var date = new Date('December 9 , 1991');
+	alert(date);
+	var date = new Date('December 9 , 1991 02:24:23');
+	alert(date);
+	var date =  new Date(2732741033257);
+	alert(date);
+	
+	
+	var date = new Date();
+	date.setDate(date.getDate() + 7);
+	alert(date);
+	
+	var now = new Date();
+	var before = new Date('December 9 , 1991');
+	
+	var interval = now.getTime() - before.getTime();
+	interval = Math.floor(interval / (1000*60*60*24));
+	alert('interval : ' + interval + '일');
+
+
+	Date.prototype.getInterval = function(otherDate)
+	{
+		var interval;
+		if(this > otherDate)
+			{
+			interval = this.getTime() - otherDate.getTime();
+			}
+		else
+			{
+			interval = otherDate.getTime()- this.getTime();
+			}
+		return Math.floor(interval / (1000*60*60*24));
+	};
+	
+	var now = new Date();
+	var before = new Date('December 9 , 1991');
+	alert('interval : ' + now.getInterval(before) + '일');
+	
+	
+	alert(Math.E);
+	alert(Math.LN2);
+	alert(Math.LN10);
+	alert(Math.LOG2E);
+	alert(Math.LOG10E);
+	alert(Math.PI);
+	alert(Math.SQRT1_2);
+	alert(Math.SQRT2);
+	
+	var max = Math.max;
+	alert(max(52,273,103,57,32));
+
+	
+	
+	alert(Array.isArray({1,2,3}));
+	alert(Array.isArray({}));
+	alert(Array.isArray(1));
+	
+	
+	
+	var array = [1,2,3,4,5,5,4,3,2,1];
+	
+	var o1 = array.indexOf(4);
+	var o2 = array.indexOf(8);
+	var o3 = array.lastIndexOf(4);
+	var o4 = array.lastIndexOf(8);
+	
+	var out = '';
+	
+	out += 'o1 : ' + o1 + '\n';
+	out += 'o2 : ' + o2 + '\n';
+	out += 'o3 : ' + o3 + '\n';
+	out += 'o4 : ' + o4 + '\n';
+	alert(out);
+	
+	
+	var arr =[1,2,3,4,5,6,7,8,9,10];
+	
+	var sum = 0;
+	var out = '';
+	arr.forEach(function(element,index, array){
+		sum += element;
+		out += index + ':'+element + ' ->' +sum + '\n';
+	});
+	//alert(out);
+	
+	var out = arr.map(function (element)
+			{
+				return element * element;
+			});
+	
+	alert(out)
+	
+
+	
+	var arr =[1,2,3,4,5,6,7,8,9,10];
+	
+	function lessThanFive(element, index)
+	{
+		return element < 5;
+	}
+	function lessThanTwenty(element, index)
+	{
+		return element < 20;
+	}
+	
+	var out1 = arr.every(lessThanFive);
+	var out2 = arr.every(lessThanTwenty);
+	var out3 = arr.some(lessThanFive);
+	var out4 = arr.some(lessThanFive);
+	
+	var out ='';
+	
+	out += out1 + ':' +out2 + '\n';
+	out += out3 + ':' +out4 + '\n';
+	alert(out);
+	
+	
+	var array = [1,2,3,4,5];
+	
+	var out = '';
+	array.reduce(function (previousValue, currentvalue,index,array)
+			{
+			out += previousValue + ':' + currentvalue + ':' + index +'\n';
+						});
+	alert(out);
+	
+	*/
+	////// json//////////////////////////////////////
+	/*
+	var obj ={
+		name: '윤인성',
+		region: '서울특별시'
+	};
+	
+	//alert(JSON.stringify(obj));
+	var text = JSON.stringify(obj);
+	alert(typeof(text) + ":" + text);
+	
+	var copy = JSON.parse(text);
+	
+	alert(typeof(copy) + ":" + copy.name + ':' + copy.gender);
+	
+	var obj ={
+			name: 'object',
+			prop: 'object',
+			toJSON: function(){
+				return {custom: 'custom'};
+			}
+		};
+	alert(JSON.stringify(obj));
+
+	var text = '   text';
+	
+	var out = '';
+	out += '++' + text + '++\n';
+	out += '++' + text.trim() + '++';
+	alert(out);
+	
+	var object = {};
+	Object.defineProperty(object, 'name',
+			{value: '윤인성', writable:true, enumerable: false});
+	
+	object.name = 'OTHER';
+	for(var i in object){
+		alert(i + ':' + object[i]);
+	}
+	
+	alert(object.name);
+	
+	
+	
+var object = {};
+var value = 'test';
+Object.defineProperty(object, 'name', {
+	get : function() {
+		alert('GETTER');
+		return value;
+	},
+	set : function(newVal) {
+		alert('SETTER : ' + newVal);
+		value = newVal;
+	}
+});
+
+//object.name = 'ALPHA';
+alert(object.name);
+
+
+
+
+var object = {};
+var value = 'test';
+Object.defineProperty(object, 'name', {
+	get : function() {
+		alert('GETTER');
+		return value;
+	},
+	set : function(newVal) {
+		alert('SETTER');
+		value = newVal;
+	},
+	configurable: false
+});
+
+object.name = 'aaa';
+alert(object.name);
+
+Object.defineProperty(object, 'name', {
+	 enumerable: true
+});
+object.name = 'aaa';
+alert(object.name);
+
+	
+	var object = {};
+	var value = 'test';
+	Object.defineProperty(object,'name',{
+		get : function() {
+			alert('GETTER');
+			return value;
+		},
+		set : function(newVal) {
+			alert('SETTER');
+			value = newVal;
+		},
+		configurable: true
+	});
+	
+	object.name = 'aaa';
+	alert(object.name);
+
+	Object.defineProperty(object, 'name', {
+		 enumerable: true,
+		get : function() {
+			alert('newget');
+			return value;
+		},
+		set : function(newVal) {
+			alert('netset');
+			value = newVal;
+		},
+		configurable: true
+	});
+	object.name = 'bbb';
+	alert(object.name);
+
+	var object = {};
+	Object.defineProperties(object,{
+		name: {value: '윤인성'},
+		region: {value: '서울특별시'}
+			});
+	alert(object.name);
+	
+	
+	var object2 = {};
+	Object.defineProperties(object2,{
+		name: {value: '윤인성'},
+		region: {value: '서울특별시'}
+			});
+	alert(object2.name);
+	*/
+	var object = Object.create({},{
+		name: {value: '윤인성', enumerable:true },
+		region: {value: '서울특별시',enumerable:false}
+	});
+	
+	alert(Object.keys(object))
+	
+	
+	
+	var object = Object.create({},{
+		name: {value: '윤인성', enumerable:true},
+		region: {value: '서울특별시', enumerable:true}
+	});
+	
+	var person = Object.create(object,{
+		gender: {value: '남자', enumerable:true},
+		hobby: {value: '기타', enumerable:true}
+	});
+	alert(Object.getOwnPropertyNames(object) + '\n' + Object.keys(object));
+	alert(Object.getOwnPropertyNames(person) + '\n' + Object.keys(person));
+	alert(person.name + ' : ' + person.region);
+	alert(person.gender + ' : ' + person.hobby);
+	
+	
+	
+	</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

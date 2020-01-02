@@ -1,0 +1,22 @@
+#d1{
+	position: relative;
+	top: 10%;
+	left: 25%;
+	width: 50%;
+	padding-top: 109px;
+}
+a{
+text-decoration: none;
+color : black;}
+#keyword{
+	
+	width: 300px;
+	border: 1px solid grey;
+	border-radius: 20px;
+	padding: 10px;
+	
+	
+}
+*:focus{
+	outline: none;
+} 

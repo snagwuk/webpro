@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+   href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+   href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Exo&display=swap"
+   rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="js/function.js"></script>
+<script>
+   $(function() {
+      var $container = $("#slides>.slides-container");
+      var $indicator = $("#slides>.slides-pagination>li>a");
+      var $btnAuto = $("#slides>.btn_auto");
+      var nowIdx = 5;
+      var oldIdx = nowIdx;
+      var intervalD = null;
+      var aniChk = false;
+      var noEventTime = 0;//이벤트가 없는 시간체크 변수
+
+      //최초 크게 보여지는 요소
+      $container.children("li").eq(nowIdx).css({
+         "width" : 200,
+         "height" : 200,
+         "margin-top" : -50
+      });
+
+      //인디케이터 활성화 함수
+      var setIndicatorState = function(setIdx) {
+         console.log("setIdx = ", setIdx);
+         $indicator.eq(setIdx).parent().addClass("on").siblings()
+               .removeClass("on");
+      };
+      setIndicatorState(0);
+
+      //활성요소 크기조절 함수
+      var scaleUpDown = function() {
+         $container.children("li").eq(oldIdx).animate({
+            "width" : 100,
+            "height" : 100,
+            "margin-top" : 0
+         });
+
+         $container.children("li").eq(nowIdx).animate({
+            "width" : 200,
+            "height" : 200,
+            "margin-top" : -50
+         });
+      };
+
+      //이전 슬라이드의 순서 재배치 함수
+      var prevSlideOrder = function() {
+         if (nowIdx < 3) {
+            var $temp = $container.children().slice(15, 23).remove();
+            $container.children().slice(8).prependTo($container);
+            $container.prepend($temp).css({
+               "left" : -146 * 15 - 23
+            });
+
+            nowIdx = 17;
+         }
+      };
+
+      //다음번 슬라이드의 순서 재배치 함수
+      var nextSlideOrder = function() {
+         if (nowIdx > 19) {
+            var $temp = $container.children().slice(0, 8).remove();
+            $container.children().slice(0, 7).appendTo($container);
+            $container.append($temp).css({
+               "left" : -146 * 3 - 23
+            });
+
+            nowIdx = 5;
+         }
+      };
+
+      //슬라이드 이동함수
+      var move = function(direction) {
+         scaleUpDown();//활성요소 크기조절 함수 호출
+         $container.stop().animate({
+            "left" : -146 * (nowIdx - 2) - 23
+         }, function() {
+            if ($.trim(direction) == "next") {
+               nextSlideOrder();//슬라이드 순서 재배치 함수 호출
+            } else {
+               prevSlideOrder();//슬라이드 순서 재배치 함수 호출
+            }
+
+            aniChk = false;
+         });
+
+         var setIdx = $container.children().eq(nowIdx).attr("data-set");
+         setIndicatorState(parseInt(setIdx));
+      };
+
+      //자동재생 함수
+      var autoPlay = function() {
+         $btnAuto.addClass("pause").text("재생정지");
+         intervalD = setInterval(function() {
+            oldIdx = nowIdx;
+            nowIdx++;
+            move("next");
+         }, 3000);
+      };
+
+      var autoStop = function() {
+         $btnAuto.removeClass("pause").text("자동재생");
+         clearInterval(intervalD);
+      };
+
+      //자동재생 버튼에 대한 클릭이벤트
+      $btnAuto.on("click", function(evt) {
+         evt.preventDefault();
+         noEventTime = 0; //이벤트 시간체크 변수 초기화
+         if ($(this).hasClass("pause")) {//자동재생 중이면...
+            autoStop();
+         } else { //자동재생 중이 아니면...
+            autoPlay();
+         }
+      });
+
+      //이전버튼
+      $(".slides-prev").on("click", function(evt) {
+         evt.preventDefault();
+         autoStop();
+         if (aniChk == false) {
+            aniChk = true;
+            oldIdx = nowIdx;
+            nowIdx--;
+            move(" prev ");
+         }
+         console.log("nowIdx = ", nowIdx);
+      });
+
+      //다음버튼
+      $(".slides-next").on("click", function(evt) {
+         evt.preventDefault();
+         autoStop();
+         if (aniChk == false) {
+            aniChk = true;
+            oldIdx = nowIdx;
+            nowIdx++;
+            move(" next ");
+         }
+         console.log("nowIdx = ", nowIdx);
+      });
+
+      //인디케이터에 대한 클릭이벤트
+      $indicator.on("click", function(evt) {
+         evt.preventDefault();
+         autoStop();
+         oldIdx = nowIdx;
+         nowIdx = parseInt($(this).attr("data-idx"));
+         if (aniChk == false && nowIdx != oldIdx) {
+            aniChk = true;
+            move("next");
+         }
+
+         var setIdx = $container.children().eq(nowIdx).attr("data-set");
+         setIndicatorState(parseInt(setIdx));
+      });
+
+      //10초 간격의 시간체크기
+      var timeCheck = function() {
+         setInterval(function() {
+            noEventTime++;
+            console.log("noEventTime = ", noEventTime);
+            if (noEventTime > 10 && $btnAuto.hasClass("pause") == false) {
+               $btnAuto.trigger("click");
+            }
+         }, 1000);
+      };
+
+      $(window).on("load", function() {
+         timeCheck();
+         autoPlay();
+      });
+   });
+   
+   
+    $(document).ready(function () {
+       $('h3#main').click(function(){
+          location.href='Total.html';
+          alert('asdsadsad');
+          });
+    });
+    
+    
+</script>
+
+<style>
+.mySlides {
+   display: none
+}
+
+.w3-left, .w3-right, .w3-badge {
+   cursor: pointer
+}
+
+.w3-badge {
+   height: 13px;
+   width: 13px;
+   padding: 0
+}
+
+ul {
+   list-style: none;
+}
+
+.header {
+   position: relative;
+   max-width: 1225px;
+   margin: 0 auto;
+   background-color: #FFFFFF;
+   list-style-type: none;
+   font-family: 'Exo', sans-serif;
+   overflow: hidden;
+}
+
+.header .store {
+   float: left;
+}
+
+.header .logo {
+   float: left;
+   margin-left: 420px;
+   max-width: 100;
+}
+
+.header .menu {
+   float: right;
+}
+
+.header li a {
+   display: block;
+   background-color: #FFFFFF;
+   color: #000000;
+   padding: 10px;
+   text-decoration: none;
+   text-align: center;
+   font-weight: bold;
+   width: 100px;
+}
+
+.header li a:hover {
+   color: #9F9F9F;
+}
+
+.purchase {
+   position: relative;
+   text-align: center;
+}
+
+.purchase {
+   position: relative;
+   text-align: center;
+}
+
+.purchase ul {
+   display: inline-block;
+   width: 1000px;
+   box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+   -webkit-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+   -moz-box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+   box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.1);
+   list-style: none;
+   -webkit-padding-start: 0px;
+}
+
+.purchase li {
+   float: left;
+   width: 20%;
+   border-left: 1px solid #eee;
+   box-sizing: border-box;
+}
+
+.purchase li a {
+   position: relative;
+   display: block;
+   height: 150px;
+   padding-top: 40px;
+   background: #fff;
+   font-size: 16px;
+   color: #333;
+   -webkit-transition: all 0.3s;
+   -moz-transition: all 0.3s;
+   -ms-transition: all 0.3s;
+   -o-transition: all 0.3s;
+}
+
+.purchase li a:before {
+   display: block;
+   position: relative;
+   width: 40px;
+   height: 40px;
+   margin: 0 auto 10px;
+   background-repeat: no-repeat;
+   background-position: center center;
+   content: '';
+   align: center;
+   content: '';
+}
+
+.purchase li a.new:before {
+   background-image: url(file/new.svg);
+}
+
+.purchase li a.pop:before {
+   background-image: url(file/smile.svg);
+}
+
+.purchase li a.age:before {
+   background-image: url(file/age.svg);
+}
+
+.purchase li a.event:before {
+   background-image: url(file/star.svg);
+}
+
+.purchase li a.home:before {
+   background-image: url(file/list.svg);
+}
+
+.purchase li a:hover, .purchase li a:focus, .purchase li a:active {
+   background: #bb162b;
+   color: #fff;
+   text-decoration: none;
+}
+
+.purchase li a:hover:before, .purchase li a:focus:before, .purchase li a:active:before
+   {
+   background-position-y: -50px;
+}
+
+.mySlides {
+   display: none;
+}
+
+body, h1, h2, h3 {
+   font-family: 'Exo', sans-serif;
+}
+
+h4, h5, h6 {
+   font-family: 'Do Hyeon', sans-serif;
+}
+
+body, html {
+   height: 100%;
+   line-height: 1.8;
+}
+
+align-center {
+   text-align: center;
+}
+
+/* Full height image header */
+.bgimg-1 {
+   background-position: center;
+   background-size: cover;
+   background-image: url("aa.png");
+   min-height: 60%;
+}
+
+.w3-bar .w3-button {
+   padding: 16px;
+}
+
+/* Main Slide st*/
+#homepage_slider video {
+   min-height: 100% !important;
+   min-width: 100% !important;
+   height: auto !important;
+   width: auto !important;
+   vertical-align: middle;
+   overflow: hidden;
+}
+
+#homepage_slider img {
+   width: 100%;
+   max-width: 100%;
+   height: auto;
+   vertical-align: middle;
+   border: 0;
+}
+
+.carousel-inner>.item>img {
+   display: block;
+   line-height: 1;
+}
+
+/* button to display if user choses to not autoplay the video: */
+#slider-play-button button {
+   display: inline-block;
+   border: 0.06666em solid #fff;
+   font-size: 2rem;
+   background: rgba(255, 255, 255, 0.23);
+   color: #fff;
+   cursor: pointer;
+   transition: .3s background;
+   line-height: 1.3em;
+   height: 1.5em;
+   width: 2.5em;
+   border-radius: 0.3em;
+   position: absolute;
+   opacity: .7;
+   right: 1em;
+   top: 20%;
+}
+
+.play-video-button:before {
+   font-family: FontAwesome;
+   content: "\f04b";
+}
+
+.pause-video-button:before {
+   font-family: FontAwesome;
+   content: "\f04c";
+}
+
+
+/* 지은이 부분 */
+@charset "utf-8";
+
+.clearfix {
+   *zoom: 1;
+}
+
+.clearfix:after {
+   display: block;
+   clear: both;
+   content: '';
+}
+
+
+body {
+   background-image: url(../images/bgi.jpg);
+   background-size: cover;
+}
+
+h1 {
+   height: 100px;
+   line-height: 100px;
+   text-align: center;
+}
+
+#slides {
+   overflow: hidden;
+   position: relative;
+   width: calc(500px + 230px + 100px);
+   height: 280px;
+   margin: 0 auto;
+}
+
+#slides>.slides-container {
+   position: absolute;
+   left: calc(-146px * 3 - 23px);
+   top: 50px;
+   width: 5000px;
+   height: 100px;
+}
+
+#slides>.slides-container>li {
+   float: left;
+   width: 100px;
+   margin-left: 46px;
+   background-size: contain;
+   background-position: center center;
+   background-repeat: no-repeat;
+}
+
+#slides>.slides-next {
+background-color : white;
+   display: block;
+   position: absolute;
+   left: 50%;
+   bottom: 10px;
+   width: 0;
+   height: 0;
+   margin-left: 270px;
+   text-indent: -9999px;
+   border-width: 10px;
+   border-style: solid;
+   border-color: transparent transparent transparent gray;
+   z-index: 100;
+}
+
+#slides>.slides-prev {
+   background-color : white;
+   display: block;
+   position: absolute;
+   left: 50%;
+   bottom: 10px;
+   width: 0;
+   height: 0;
+   margin-left: -290px;
+   text-indent: -9999px;
+   border-width: 10px;
+   border-style: solid;
+   border-color: transparent gray transparent transparent;
+   z-index: 100;
+}
+
+#slides>.slides-pagination {
+   position: absolute;
+   left: 50%;
+   bottom: 10px;
+   margin-left: -270px;
+   z-index: 100;
+}
+
+#slides>.slides-pagination>li {
+   float: left;
+   width: 100px;
+   margin-right: 10px;
+   text-align: center;
+}
+
+#slides>.slides-pagination>li:last-child {
+   margin-right: 0;
+}
+
+#slides>.slides-pagination>li>a {
+   display: inline-block;
+   height: 20px;
+   color: #000;
+   line-height: 20px;
+   text-align: center;
+}
+
+#slides>.slides-pagination>li.on>a {
+   color: #00f;
+   font-weight: 800;
+}
+
+/* 자동재생 버튼*/
+#slides>.btn_auto {
+   display: block;
+   position: absolute;
+   left: 50%;
+   bottom: 10px;
+   width: 20px;
+   height: 20px;
+   margin-left: 300px;
+   text-indent: -9999px;
+
+   background-position: -62px -24px;
+   z-index: 1000;
+}
+
+#slides>.btn_auto.pause {
+   background-position: 0 -57px;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="js/function.js"></script>
+
+<body>
+
+<div class="header">
+      <ul>
+         <li class="store"><a href="Main.html"><h3>SIST.STORE</h3></a></li>
+        
+         <li class="menu"><a href="e_main.html"><h3>EVENT</h3></a></li>
+         <li class="menu"><a href="Total.html#age"><h3>AGE</h3></a></li>
+         <li class="menu"><a href="Total.html#best"><h3>HOT</h3></a></li>
+         <li class="menu"><a href="Total.html"><h3>NEW</h3></a></li>
+      </ul>
+   </div>
+
+
+   <!-- /* Main Slide body start*/ 지영언니 부분 -->
+   <script>
+      // without this script, the slider doesn't start on it's own:
+      !function($) {
+         $(function() {
+            $('#homepage_slider').carousel()
+         })
+      }(window.jQuery)
+
+      // if user chooses to not autoplay the video, the button should be uncommented in html and this script will make the button work:
+      var vid = document.getElementById("bgvid");
+      var playButton = document.querySelector("#slider-play-button button");
+
+      playButton.addEventListener("click", function() {
+         if (vid.paused) {
+            vid.play();
+            playButton.classList.remove("play-video-button");
+            playButton.classList.add("pause-video-button");
+         } else {
+            vid.pause();
+            playButton.classList.add("play-video-button");
+            playButton.classList.remove("pause-video-button");
+         }
+      });
+   </script>
+
+   <div id="banner">
+      <!-- Slider begins here -->
+      <div id="homepage_slider" class="carousel slide">
+         <ol class="carousel-indicators">
+            <li data-target="#homepage_slider" data-slide-to="0" class="active"></li>
+            <li data-target="#homepage_slider" data-slide-to="1"></li>
+            <li data-target="#homepage_slider" data-slide-to="2"></li>
+         </ol>
+
+         <!-- Carousel items -->
+         <div class="carousel-inner">
+
+            <!-- slide #1 -->
+            <div data-slide="0" class="item active">
+               <div class="slider-hide-on-mobile">
+                  <video title="1" id="bgvid" autoplay loop muted
+                     poster="file/Mainpage1.jpg">
+                     <source src="file/WinterWanderland.mp4" type="video/webm">
+                     Your browser does not support the video tag.
+                  </video>
+               </div>
+            </div>
+
+            <!-- slide #2 (image) -->
+            <div data-slide="1" class="item" onClick="location.href='e_sale.html'">
+               
+               <img title="Event1" alt="image of the event "
+                  src="file/Mainpage1.jpg" > 
+               
+            </div>
+
+            <!-- slide #3 (image) -->
+            <div data-slide="2" class="item" onClick="location.href='e_free.html'">
+               <img title="Event2" alt="image of the event"
+                  src="file/Mainpage2.jpg">
+            </div>
+         </div>
+         <!-- end of '.carousel-inner' -->
+
+         <!-- Carousel nav -->
+         <!-- <div id="slider-play-button"><button class="play-video-button" type="button" title="Play Video"></button></div> -->
+         <a class="carousel-control left" href="#homepage_slider"
+            data-slide="prev">&lsaquo;</a> <a class="carousel-control right"
+            href="#homepage_slider" data-slide="next">&rsaquo;</a>
+      </div>
+      <!-- end of '#homepage_slider' -->
+      <!-- Slider ends here -->
+   </div>
+   <!-- end of "#banner" -->
+   <!-- /* Main Slide body end*/ -->
+
+
+
+
+
+   <!-- test/상욱이 -->
+   <br>
+   <div class="purchase">
+      <ul>
+         <li><a class="home" href="Main.html"> <span>홈</span>
+         </a></li>
+         <li><a class="new" href="Total.html"> <span>신규</span>
+         </a></li>
+         <li><a class="pop" href="Total.html#best"> <span>인기</span>
+         </a></li>
+         <li><a class="age" href="Total.html#age"> <span>연령별
+                  순위</span>
+         </a></li>
+         <li><a class="event" href="e_main.html"> <span>이벤트</span>
+         </a></li>
+      </ul>
+   </div>
+<div id = "background">
+   <div id = "contentbody" style="height: 1100px; padding: 50px 50px 150px 50px;">
+      <!-- 지은이 부분 -->
+      <div id="wrap"
+         style="position: relative; float: left; padding: 50px 80px 50px 50px;">
+         <h1>Best Emoticon</h1>
+         <div id="slides">
+            <ul class="slides-container clearfix">
+               <li class="theme_10" data-set="3"><a><img
+                     src="file/picture.gif" style="width: 100%"></a></li>
+               <li class="theme_11" data-set="3"><a><img
+                     src="file/picture1.gif" style="width: 100%"></a></li>
+               <li class="theme_12" data-set="4"><a><img
+                     src="file/picture2.gif" style="width: 100%"></a></li>
+               <li class="theme_13" data-set="4"><a><img
+                     src="file/picture3.gif" style="width: 100%"></a></li>
+               <li class="theme_14" data-set="4"><a><img
+                     src="file/picture4.gif" style="width: 100%"></a></li>
+
+
+               <li class="theme_0" data-set="0"><a><img
+                     src="file/picture.gif" style="width: 100%"></a></li>
+               <li class="theme_1" data-set="0"><a><img
+                     src="file/picture1.gif" style="width: 100%"></a></li>
+               <li class="theme_2" data-set="0"><a><img
+                     src="file/picture2.gif" style="width: 100%"></a></li>
+               <li class="theme_3" data-set="1"><a><img
+                     src="file/picture3.gif" style="width: 100%"></a></li>
+               <li class="theme_4" data-set="1"><a><img
+                     src="file/picture4.gif" style="width: 100%"></a></li>
+               <li class="theme_5" data-set="1"><a><img
+                     src="file/picture.gif" style="width: 100%"></a></li>
+               <li class="theme_6" data-set="2"><a><img
+                     src="file/picture1.gif" style="width: 100%"></a></li>
+               <li class="theme_7" data-set="2"><a><img
+                     src="file/picture2.gif" style="width: 100%"></a></li>
+               <li class="theme_8" data-set="2"><a><img
+                     src="file/picture3.gif" style="width: 100%"></a></li>
+               <li class="theme_9" data-set="3"><a><img
+                     src="file/picture4.gif" style="width: 100%"></a></li>
+               <li class="theme_10" data-set="3"><a><img
+                     src="file/picture.gif" style="width: 100%"></a></li>
+               <li class="theme_11" data-set="3"><a><img
+                     src="file/picture1.gif" style="width: 100%"></a></li>
+               <li class="theme_12" data-set="4"><a><img
+                     src="file/picture2.gif" style="width: 100%"></a></li>
+               <li class="theme_13" data-set="4"><a><img
+                     src="file/picture3.gif" style="width: 100%"></a></li>
+               <li class="theme_14" data-set="4"><a><img
+                     src="file/picture4.gif" style="width: 100%"></a></li>
+
+
+               <li class="theme_0" data-set="0"><a><img
+                     src="file/picture.gif" style="width: 100%"></a></li>
+               <li class="theme_1" data-set="0"><a><img
+                     src="file/picture1.gif" style="width: 100%"></a></li>
+               <li class="theme_2" data-set="0"><a><img
+                     src="file/picture2.gif" style="width: 100%"></a></li>
+            </ul>
+
+
+            <button class="slides-prev">prev</button>
+
+            <button class="slides-next">next</button>
+
+         </div>
+      </div>
+
+      <!-- 성식이 부분 -->
+      <div class="w3-container"
+         style="text-align: center; position: relative; float: left; padding: 5px 6px 7px 8px;">
+         <h1>Emoticon Event</h1>
+
+         <div class="w3-content w3-display-container"
+            style="max-width: 700px; box-shadow: 20px 20px 10px grey;">
+            
+            <a href="e_sale.html"
+               onclick="dtmDataLayer.internal_link='main|event|kiavik100'; _satellite.track('internal_link');">
+               <img class="mySlides" src="file/sale.PNG" 
+               style="width: 700px; height: 350px;">
+            </a> <a href="e_studio.html"
+               onclick="dtmDataLayer.internal_link='main|event|k5carcareprogram'; _satellite.track('internal_link');">
+               <img class="mySlides" src="file/studio.PNG"
+               style="width: 700px; height: 350px;">
+            </a> <a href="e_shop.html"
+               onclick="dtmDataLayer.internal_link='main|event|kseries10th'; _satellite.track('internal_link');">
+               <img class="mySlides" src="file/shop.PNG"
+               style="width: 700px; height: 350px;">
+            </a> <a href="e_shop.html"
+               onclick="dtmDataLayer.internal_link='main|event|kseries10th'; _satellite.track('internal_link');">
+               <img class="mySlides" src="file/coupon.png"
+               style="width: 700px; height: 350px;">
+            </a> <a href="e_free.html"
+               onclick="dtmDataLayer.internal_link='main|event|kseries10th'; _satellite.track('internal_link');">
+               <img class="mySlides" src="file/renew.PNG"
+               style="width: 700px; height: 350px;">
+            </a>
+            <a href="e_free.html" onclick="dtmDataLayer.internal_link='main|event|kiavik100'; _satellite.track('internal_link');">
+  <img class="mySlides" src="file/free.PNG" style="width:700px; height:350px;">
+  </a>
+            
+            <div
+               class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
+               style="width: 100%">
+               <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+               <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+               <span class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(1)"></span> <span
+                  class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(2)"></span> <span
+                  class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(3)"></span> <span
+                  class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(4)"></span> <span
+                  class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(5)"></span> <span
+                  class="w3-badge demo w3-border w3-transparent w3-hover-white"
+                  onclick="currentDiv(6
+           )"></span>
+            </div>
+         </div>
+      </div>
+
+   </div>
+
+</div>
+   <script>
+      var slideIndex = 1;
+      showDivs(slideIndex);
+
+      setInterval(function() {
+         plusDivs(1);
+      }, 2000);
+
+      function plusDivs(n) {
+         showDivs(slideIndex += n);
+      }
+
+      function currentDiv(n) {
+         showDivs(slideIndex = n);
+      }
+
+      function showDivs(n) {
+         var i;
+         var x = document.getElementsByClassName("mySlides");
+         var dots = document.getElementsByClassName("demo");
+         if (n > x.length) {
+            slideIndex = 1
+         }
+         if (n < 1) {
+            slideIndex = x.length
+         }
+         for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+         }
+         for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-white", "");
+         }
+         x[slideIndex - 1].style.display = "block";
+         dots[slideIndex - 1].className += " w3-white";
+      }
+   </script>
+
+
+
+   <!-- Footer -->
+   <footer class="w3-center w3-black w3-padding-64">
+      <a href="#home" class="w3-button w3-light-grey"><i
+         class="fa fa-arrow-up w3-margin-right"></i>To the top</a>
+      <div class="w3-xlarge w3-section">
+         <i class="fa fa-facebook-official w3-hover-opacity"></i> <i
+            class="fa fa-instagram w3-hover-opacity"></i> <i
+            class="fa fa-snapchat w3-hover-opacity"></i> <i
+            class="fa fa-pinterest-p w3-hover-opacity"></i> <i
+            class="fa fa-twitter w3-hover-opacity"></i> <i
+            class="fa fa-linkedin w3-hover-opacity"></i>
+      </div>
+      <p>
+       
+      </p>
+   </footer>
+
+   <script>
+      // Modal Image Gallery
+      function onClick(element) {
+         document.getElementById("img01").src = element.src;
+         document.getElementById("modal01").style.display = "block";
+         var captionText = document.getElementById("caption");
+         captionText.innerHTML = element.alt;
+      }
+
+      // Toggle between showing and hiding the sidebar when clicking the menu icon
+      var mySidebar = document.getElementById("mySidebar");
+
+      function w3_open() {
+         if (mySidebar.style.display === 'block') {
+            mySidebar.style.display = 'none';
+         } else {
+            mySidebar.style.display = 'block';
+         }
+      }
+
+      // Close the sidebar with the close button
+      function w3_close() {
+         mySidebar.style.display = "none";
+      }
+   </script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

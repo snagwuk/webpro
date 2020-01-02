@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script type="text/javascript" src="/webpro/AJAX/httpRequest.js"></script>
+<script >
+
+function loadList() {
+	sendRequest("test04.jsp",null,loadedList,"GET");
+}
+function loadedList(){
+	if( httpRequest.readyState == 4)
+		{
+		if(httpRequest.status == 200)
+			{
+			var csvStr = httpRequest.responseText;
+			
+			var temperatureStrs = csvStr.split(",");
+			var temperatures = new Array(temperatureStrs.length);
+			for( var i = 0 ; i < temperatureStrs[i]; i++)
+				{
+					temperatures[i] = parseFloat(temperatureStrs[i]);
+				}
+			var max = temperatures[0];
+			for(var i = 1; i < temperatures.length; i++)
+				{
+					if(max < temperatures[i])
+						{
+						max = temperatures[i];
+						}
+				}
+			
+			var maxtemp = document.getElementById("maxtemp");
+			maxtemp.innerHTML  = "<strong>" + max + "</strong>";
+			
+			}
+		else {
+			alert(httpRequest.status);
+		}
+		}
+}
+window.onload = function() {
+	loadList();
+}
+
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+최근 4일간 최고 기온 : <span id="maxtemp"></span>
+</body>
+</html>

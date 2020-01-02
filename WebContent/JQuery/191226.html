@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+/* 
+$(document).ready(function () {
+	$(window).scroll(function () {
+		var scollHeight = $(window).scrollTop() + $(window).height();
+		var documentHeight = $(document).height();
+		
+		
+		if(scollHeight == documentHeight) {
+			for ( var i = 0; i< 10; i++)
+				{
+					$('<h1>Infinity scroll</h1>').appendTo('body');
+				}
+		}
+		
+	});
+});
+$(document).ready(function () {
+	
+	for(var i = 0 ; i < 20; i++)
+		{
+		$('<h1>----------Infinity scroll</h1>').appendTo('body');
+		}
+});
+ */
+ 
+ $(document).ready(function () {
+	 
+	/*  
+	$('#my-form').submit(function (event) {
+		var name = $('name').val();
+		var password = $('password').val();
+		
+		alert(name + ': ' + password);
+		event.preventDefault();
+
+	});
+	
+	  */
+	  /* 
+	  $('#all-check').change(function () {
+		  if( this.checked)
+		 {
+		  $('#check-itme').children().prop('checked',true);
+	  }else
+		  {
+		  $('#check-itme').children().prop('checked',false);
+		  }
+	  });
+	   */
+	  /* 
+	   $('button').click(function () {
+		   $('.page').toggle('slow');
+	   });
+	    */
+	    /* 
+	    $('div').hover(function(){
+	    	$(this).animate({
+	    		left : 500
+	    	} ,'slow');
+	    },function() {
+	    	$ (this).animate({
+	    		left :0 
+	    	},'slow');
+	    });
+	    */
+	    /* 
+	    $('div').click(function(){
+	    	var width = $(this).css('width');
+	    	var height = $(this).css('height');
+	    	
+	    	$(this).animate({
+	    		width: parseInt(width)+50,
+	    		height: parseInt(height)+50
+	    	},'slow');
+	    });
+	     */
+	    /* 
+	    $('div').click(function(){   	
+	    	$(this).animate({
+	    		width: '+=50',
+	    		height: '+=50'
+	    	},'slow');
+	    });
+	     */
+	    /* 
+	     $('div').animate({left: '+=60'},2000); 
+	     $('div').animate({width: '+=60'},2000); 
+	     $('div').animate({height: '+=60'},2000); 
+	     
+	     setTimeout(function(){
+	    	   $('div').clearQueue();
+	    	   $('div').hide();
+	     },10000) ;
+	      */
+	      /* 
+	      $('button').click(function(){
+	    	  var html = $(this).htnl();
+	    	  var evalText= "$('div')." + html;
+	    	  
+	    	  eval(evalText);
+	    	  
+	      });
+	      
+	      setInterval(function(){
+	    	  $('div').animate({
+	    		  left: '500'
+	    	  },1000).animate({
+	    		  left: '0'
+	    	  },1000);
+	      },2000);
+	       */
+	       
+	       $('div').each(function(index){
+	    	  $(this).delay(index*500).animate({left:500},'slow'); 
+	       });
+	       
+ });
+
+</script>
+<style type="text/css">
+ div{
+	width: 50px;height:50px;
+	background-color:orange;
+	position: relative;
+	} 
+</style>
+<title>Insert title here</title>
+</head>
+<body>
+<button>stop()</button>
+<button>stop(true)</button>
+<button>stop(false,true)</button>
+<button>stop(true,true)</button>
+<div></div><div></div>   <div></div><div></div>   <div></div><div></div>
+
+<!-- 
+<button> toggle show</button>
+<div class="page">
+<h1> loreasdasd adsfsadfsafsdf</h1>
+<p> 123545635635434564</p>
+ </div>
+ -->
+<!-- 
+<input type = "checkbox" id="all-check">
+<label> All</label>
+<div id="check-itme"> 
+	<input type="checkbox">
+	<label> A Option</label>
+	<input type="checkbox">
+	<label> B Option</label>
+	<input type="checkbox">
+	<label> C Option</label>
+
+</div>
+ -->
+<!-- 
+<form if="my-form">
+<table>
+	<tr>
+		<td> 이름 :  </td>
+		<td> <input type = "text" name = "name" id="name">  </td>
+	 </tr>
+	 <tr>
+		<td> 비밀번호 :  </td>
+		<td> <input type = "password" name = "password" id="password">  </td>
+	 </tr>
+</table>
+<input type="submit" value ="제출"> 
+</form>
+ -->
+
+</body>
+</html>

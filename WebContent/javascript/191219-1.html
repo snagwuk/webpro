@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript">
+//alert('Process - 0')
+
+/* var headers = document.getElementsByTagName('h1');
+alert(headers);
+window.onload = function() {
+	alert('procsss - 0');
+} */
+
+/* window.onload = function() {
+	var headers = document.getElementsByTagName('h1');
+
+	alert('procsss - 0');
+}
+ */
+/*  var headers;
+ window.onload = function() {
+		headers = document.getElementsByTagName('h1');
+
+		alert('procsss - 0');
+ }
+ window.onload = function() {
+		alert('procsss - 0');
+}
+ alert(headers[0].HTML); */
+ 
+/*  window.onload = function() {
+		var header = document.getElementById('header');
+
+		alert(header.innerHTML);
+}; */
+/* window.onload = function() {
+	var header = document.createElement('h1');
+	var textNode = document.createTextNode('Hello DDM');
+	
+	document.body.appendChild(header);
+	header.appendChild(textNode);
+}; */
+/* window.onload = function() {
+	var img = document.createElement('img');
+	//img.src = 'b.jpg';
+	img.setAttribute('src','b.jpg');
+	document.body.appendChild(img);
+};
+ */
+/* 
+ window.onload = function() {
+ var out = '';
+ out += '<ul>';
+ out += '    <li>javascript</li>';
+ out += '    <li>jQuery</li>';
+ out += '    <li>Ajax</li>';
+ out += '</ul>';
+ document.body.textContent = out;
+ document.body.textContent += '<h1>Document asdfsfasdf</h1>';
+ };
+  */
+/*   window.onload = function() {
+	var head1 =  document.getElementById('header-1'); 
+	//var head2 =  document.getElementById('header-2'); 
+	 head1.innerHTML = 'with getElementById()';
+	//head2.innerHTML = 'with getElementById()'; 
+  }; */
+  
+/*   window.onload = function() {
+		var headers =  document.getElementsByTagName('h1'); 
+		headers[0].innerHTML = 'getElementsByTagName()+0; ';
+		headers[1].innerHTML = 'getElementsByTagName()+1; ';
+  }; */
+/*   window.onload = function() {
+	  var headers =  document.getElementsByTagName('h1'); 
+	  for(var i = 0 ; i < headers.length; i++)
+		  {
+			headers[i].innerHTML = 'getElementsByTagName()+'+i;
+		  }
+  };
+  
+  window.onload = function() {
+		var head1 =  document.querySelector('#header-1'); 
+		var head2 =  document.querySelector('#header-2'); 
+		
+		 head1.innerHTML = 'with getElementById()1';
+		 head2.innerHTML = 'with getElementById()2'; 
+  };
+   */
+  
+ /*  window.onload = function() {
+	   var head =  document.getElementById('header'); 
+	   head.style.border = '2px solid black';
+	   head.style.color = 'orange';
+	   head.style.fontFamily = 'helvetica';
+   }; */
+   /* window.onload = function() {
+	   var willRemove = document.getElementById('will-remove');
+	   
+	   document.body.removeChild(willRemove);
+	   };
+    */
+    window.onload = function() {
+    	var clock = document.getElementById('clock');
+    	setInterval(function () {
+    		clock.innerHTML = new Date().toString();
+    	},1000);
+    };
+    
+</script>
+</head>
+<body>
+<h1 id="clock"></h1>
+<!-- <h1 id="will-remove">will-remove</h1> -->
+<!-- 
+<h1 id="header-1">header-1</h1>
+<h1 id="header-2">header-2</h1>
+
+<h1 id="header">zzz</h1> -->
+<!-- <h1>Process - 1</h1>
+<script type="text/javascript">
+alert('Process - 1')
+</script>
+<h1>Process - 2</h1>
+<script type="text/javascript">
+alert('Process - 2')</script> -->
+
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+   //랜덤한 0,1 생성 
+   function nextRandomInteger(limit){
+      return Math.round(Math.random()*limit);
+   }
+   // 생성한 랜덤 인덱스로 이미지파일명 선택
+   function randomImage(){
+      var image = ['starB.png','starw.png'];
+      return image[nextRandomInteger(1)]
+   }
+    var movingTexts=[];
+     
+    var index = 0;
+    
+    var vx = 0;
+    var vy = 0;
+    
+  	//문서 객체를 생성합니다
+    function MovingText()
+    {
+       this.ob = document.createElement('img');
+       this.ob.src = randomImage();
+       this.ob.width=30;
+       this.ob.height=30;
+       this.ob.style.position = 'absolute';
+
+       this.ob.class = index++;
+       
+       this.ob.style.left = vx+'px';
+       this.ob.style.top = vy+'px';
+       
+       vx += 35;
+       if (vx == 350)
+       {
+    	   vx = 0;
+    	   vy += 35;
+       }
+       document.body.appendChild(this.ob);
+       //문서 객체를 document.body에 추가합니다.
+       
+       this.ob.onclick=function()
+       {
+			
+    	   var src =  '';
+    	  
+    	   
+    	   // 흰별인지 확인
+    		if (this.src == 'http://localhost:9080/webpro/javascript/starB.png')
+    		{
+    			tmpSrc = 'http://localhost:9080/webpro/javascript/starB.png';
+    		}
+    		else
+    			{
+    				tmpSrc = 'http://localhost:9080/webpro/javascript/starw.png';
+    			}
+    		document.body.removeChild(this);
+    		
+    		//왼쪽
+    	   for(var i=this.class-1;i >= Math.floor(this.class / 10)*10; i--)
+
+    	   {
+    		  var tmp = movingTexts[i];
+    		  
+     			 if(tmp.ob.src == tmpSrc )
+   			 	 { 
+   				  document.body.removeChild(tmp.ob);
+   			 	 }
+     			 else 
+     			 {	 break;	//for문을 중단.
+     			 
+     			 }
+       		}
+    	 	//오른쪽
+    	  for(var i=this.class+1;i < (Math.floor(this.class / 10)+1)*10; i++)
+    	   	{
+    		  var tmp = movingTexts[i];
+    		  
+     			 if(tmp.ob.src == tmpSrc )
+   			 	 { 
+   				  //document.body.removeChild(tmp.ob);
+     				tmp.ob.src = '';
+   			 	 }
+     			 else 
+     			 {	 
+     				 break;
+     			 }
+       		}
+    	 	// 위쪽
+    	 	 for(var i=this.class-10; i >= 0 ;i-=10)
+    	   		{
+    		  var tmp = movingTexts[i];
+    		  
+     			 if(tmp.ob.src == tmpSrc )
+   			 	 { 
+   				  document.body.removeChild(tmp.ob);
+   			 	 }
+     			 else 
+     			 {	 break;
+     			 
+     			 }
+    	   		}
+     			 
+     			// 아래쪽
+        	 	 for(var i=this.class+10; i < 100 ;i+=10)
+        	   		{
+        		  var tmp = movingTexts[i];
+        		  
+         			 if(tmp.ob.src == tmpSrc )
+       			 	 { 
+       				  document.body.removeChild(tmp.ob);
+       			 	 }
+         			 else 
+         			 {	 break;
+         			 
+         			 }
+        	   		}
+    	   
+    	  
+       };
+
+    };
+
+   window.onload = function()
+   {
+     for(var i=0;i<100;i++)
+      {
+    		  movingTexts[i] = new MovingText();
+      } 
+   };
+   
+</script>
+</head>
+<body>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

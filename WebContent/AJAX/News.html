@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns ="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta charset="EUC-KR" http-equiv="content-type" />
+<title>뉴스</title>
+<script type="text/javascript" src="/webpro/AJAX/httpRequest.js"></script>
+<script type="text/javascript">
+
+function loadNews()
+{
+	sendRequest("getNewsTitles.jsp",null,loadedNews,"GET");
+	}
+	function loadedNews()
+	{
+		if( httpRequest.readyState == 4)
+		{
+			if(httpRequest.status == 200){
+				var newsList = document.getElementById("newsList");
+				newsList.innerHTML = httpRequest.responseText;
+			}
+		}
+	}
+	window.onload = function() {
+		loadNews();
+	}
+</script>
+
+</head>
+<body>
+<div id="newsList"></div>
+
+</body>
+</html>

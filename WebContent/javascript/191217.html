@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+
+<script type="text/javascript">
+
+/*
+function stu(name,korean,math,english,science)
+{
+	this.이름 = name;
+	this.국어 = korean;
+	this.수학 = math;
+	this.영어 = english;
+	this.과학 = science;
+	}
+	var s = new stu('윤하린',96,98,92,98);
+	alert(s.이름);
+
+this.getSum = function()
+{
+	return this.국어 + this.수학 + this.영어+ this.과학;
+	};
+
+this.getAverage = function()
+{
+	return getSum() / 4;
+	};
+this.toString = function()
+{
+	return this.이름 + '\t' + this.getSum() + '\t' + this.getAverage() + '\n';
+	};
+
+	var students = [];
+    students.push(new Student('윤인성', 87, 98, 88, 95));
+    students.push(new Student('연하진', 92, 98, 96, 98));
+    students.push(new Student('구지연', 76, 96, 94, 90));
+    students.push(new Student('나선주', 98, 92, 96, 92));
+    students.push(new Student('윤아린', 95, 98, 98, 98));
+    students.push(new Student('윤명월', 64, 88, 92, 92));
+    students.push(new Student('김미화', 82, 86, 98, 88));
+    students.push(new Student('김연화', 88, 74, 78, 92));
+    students.push(new Student('박아현', 97, 92, 88, 95));
+    students.push(new Student('서준서', 45, 52, 72, 78));
+
+
+    var out = '이름\t총점\t평균\n';
+    for(var i in students)
+    	{
+    		out += students[i].toString() + '\n';
+    	}
+    	alert(out);
+
+
+function Rectangle(width, height)
+{
+	this.width = width;
+	this.height = height;
+	}
+Rectangle.prototype.getArea = function ()
+{
+	return this.width * this.height;
+	};
+	
+	var rect = new Rectangle(5,7);
+	
+	alert ('AREA : ' + rect.getArea());
+
+	
+	
+	function Rectangle(width, height)
+	{
+		this.width = width;
+		this.height = height;
+		
+		this.getWidth = function() {return width};
+		this.getHeight = function() {return height};
+		this.setWidth = function(w) { width = w};
+		this.setHeight = function(h) {height = h;};
+		}
+	
+function Rectangle(w, h)
+{
+	var width = w;
+	var height = h;
+	
+	this.getWidth = function() {return width};
+	this.getHeight = function() {return height};
+	this.setWidth = function(w) {
+		if (w < 0) { alert('음수 불가');}else {width = w;}
+		};
+		this.setHeight = function(h) {
+			if (h < 0) { alert('음수 불가');}else {height = h;}
+			};
+	this.getArea = function ()
+	{
+		return this.getWidth() * this.getHeight();
+		};
+	}
+
+
+	var t = new Rectangle(5,7);
+	//t.setWidth(-2);
+//alert ('AREA : ' + t.getArea());
+
+
+function square(length)
+{
+	this.width = length;
+	this.height = length;
+	}
+square.prototype.getArea() = function 
+{	
+	return this.getWidth()*this.getHeight();
+};
+
+function Square(length)
+{
+	this.base = Rectangle;
+	this.base(length,length);
+	}
+ Square.prototype = Rectangle.prototype;
+ Square.prototype.constructor = Square;
+
+var rect = new Rectangle(5,7);
+var sq = new Square(5);
+alert(rect.getArea() + ':' + sq.getArea());
+
+var primitiveNumber = 273;
+var objNumber = new Number(273);
+
+var out = '';
+out += typeof(primitiveNumber) + ':'+ primitiveNumber + '\n';
+out += typeof(objNumber) + ':'+ objNumber + '\n';
+//alert(out);
+
+
+ primitiveNumber.method = function () 
+{
+	return 'primitive method';
+	};
+	
+	var out = primitiveNumber.method() + '\n';
+	//alert(out);
+
+Number.prototype.method = function () 
+{
+	return ' method on prototype';
+	};
+	
+	var ou = '';
+	ou += primitiveNumber.method() + '\n';
+	ou += objNumber.method();
+	alert(ou);
+
+
+
+
+var obj = {property: 273};
+var name = 'aaa';
+
+var out = '';
+out += "'HOP('property') :" + obj.hasOwnProperty('property') + '\n';
+out += "'HOP('constructor') :" + obj.hasOwnProperty('constructor') + '\n';
+out += "'PIE('property') :" + obj.propertyIsEnumerable('property') + '\n';
+out += "'PIE('constructor') :" + obj.hasOwnProperty('constructor') + '\n';
+alert(out);
+
+for(var key in obj)
+	{
+	alert(obj[key]);
+	}
+*/
+var numberfromLiteral = 273;
+var numberfromObject = new Number(273);
+
+/* if(typeof(numberfromLiteral) == 'number')
+	{
+	alert('numberfromLiteral 숫자다~')
+	}
+
+if(typeof(numberfromObject) == 'number')
+{
+alert('numberfromObject 숫자다~')
+}
+
+
+if(numberfromLiteral.constructor == Number)
+	{
+	alert('numberfromLiteral 숫자다~')
+	}
+
+if(numberfromObject.constructor == Number)
+{
+alert('numberfromObject 숫자다~')
+}
+
+Object.prototype.test = function()
+{
+	alert(this);
+	};
+	var number =273;
+	number.test();
+	
+var n = 273.5210332;
+
+var out = '';
+out += n.toFixed(1) +'\n';
+out += n.toFixed(4) +'\n';
+alert(out);
+
+
+var n = Number.MAX_VALUE + 1;
+alert(n);
+
+var StringFromLiteral ='Hello world';
+var StringFromConstructor = new String('Hello world@@@');
+
+var out = '';
+out += typeof(StringFromLiteral) + '\n';
+out += typeof(StringFromConstructor) + '\n';
+alert(out)
+
+
+var char = prompt('비번입력:','6글자이상')
+if (char.length < 6)
+	{
+	alert(6글자이상');
+	}
+else
+	{
+	alert('GOOD'));
+	}
+*/
+
+var str = 'JavaScript'; var out = '';
+out += 'anchor : '  +  str.anchor() +'<br/>';
+out += 'big : '  +  str.big() +'<br/>';
+out += 'blink : '  +  str.blink() +'<br/>';
+out += 'bold : '  +  str.bold() +'<br/>';
+out += 'fixed : '  +  str.fixed() +'<br/>';
+out += 'string : '  +  str.fontcolor('red') +'<br/>';
+out += 'fontsize : '  +  str.fontsize(13) +'<br/>';
+out += 'italics : '  +  str.italics() +'<br/>';
+out += 'link : '  +  str.link('http://www.naver.com') +'<br/>';
+out += 'small : '  +  str.small() +'<br/>';
+out += 'strike : '  +  str.strike() +'<br/>';
+out += 'sub : '  +  str.sub() +'<br/>';
+out += 'sup : '  +  str.sup() +'<br/>';
+document.write(out);
+	
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

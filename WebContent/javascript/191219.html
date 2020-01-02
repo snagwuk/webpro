@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="EUC-KR">
+<script type="text/javascript">
+/*
+var person = {
+		name : '윤인성',
+		region: '서울특별시',
+		hobby:'기타'
+};
+Object.seal(person);
+delete person.name;
+
+alert(person.name);
+//
+var str = 'Visit SIST!! wow sist';
+var p1 = /sist/i;
+var p2 = /SIST/gi;
+var result = str.match(p1);
+alert('match /sist/i : ' + result);
+result = str.replace(p1,'xxxx');
+alert('replace /sist/i : ' + result);
+
+result = str.match(p2);
+alert('match /sist/gi : ' + result);
+result = str.replace(p2,'xxxx');
+alert('replace /sist/gi : ' + result);
+//
+
+var out= '';
+for(var key in window)
+	{
+	out += '○' + key + ': '+ window[key] + '\n';
+	}
+	alert(out);
+
+	//
+	//window.open('http://hanb.co.kr','child','width=600, height=300',true);
+
+	var child = window.open('','','width=300, height=200');
+	child.document.write('<h1>From Parent Window </h1>')
+
+	
+	var child = window.open('','','width=300, height=200');
+	child.moveTo(0,0);
+	
+	setInterval(function () {
+		child.moveBy(10,10);
+	},100);
+	*/
+
+	var child = window.open('','','width=300, height=200');
+	var width = screen.width;
+	var height = screen.height;
+	child.moveTo(0,0);
+	child.resizeTo(width,height);
+	
+	setInterval(function () {
+		child.resizeBy(-20,-20);
+		child.moveBy(10,10);
+	},100);
+	
+	
+	
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

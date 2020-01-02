@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+
+function nextRandomInteger(limit){
+    return Math.round(Math.random()*limit);
+ }
+ function randomImage(){
+    var image = '☆★';
+    return image.charAt(nextRandomInteger(1));
+ }
+ 
+ 
+ 
+
+ window.onload = function(){
+		var header = document.getElementByT('div');
+		
+		function whenClick(){
+			alert('CLICK');
+		}
+		//header.onclick = whenClick;
+		header.onmouseover = whenClick;
+	};
+
+
+</script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<span>asd</span><span>asd</span><span>asd</span>
+</body>
+</html>

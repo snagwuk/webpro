@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<script type="text/javascript">
+
+/* window.onload = function(){
+	var header = document.getElementById('header');
+	
+	function whenClick(){
+		alert('CLICK');
+	}
+	//header.onclick = whenClick;
+	header.onmouseover = whenClick;
+}; */
+
+/* window.onload = function(){
+	var header = document.getElementById('header');
+	
+	header.onclick = function (){
+		alert('클릭');
+		
+		header.onclick = null;
+	};
+
+}; */
+
+/* window.onload = function(){
+	document.getElementById('header').onclick = function ()
+	{
+		alert(this);
+		this.onclick = null;
+	};
+	
+}; */
+/* 
+window.onload = function(){
+	document.getElementById('header').onclick = function ()
+	{
+		this.style.color = 'orange';
+		this.style.backgroundColor = 'red';
+	};
+};
+ */
+ /* 
+ window.onload = function(){
+		document.getElementById('header').onclick = function (e)
+		{
+			alert(e);
+			var event = e|| window.event;
+			
+			document.body.innerHTML = '';
+			for(var key in event)
+				{
+				document.body.innerHTML += '<p>' + key + ':' + event[key] + '</p>';
+				}
+		};
+	};
+  */
+/*   
+  window.onload = function(){
+		var buttona = document.getElementById('button-a');
+		var buttonb = document.getElementById('button-b');
+		
+		buttona.onclick = function ()
+		{
+			//alert('button-a');
+			var x = document.getElementById('counter-a').innerHTML;
+			var temp = new Number(x);
+			document.getElementById('counter-a').innerHTML = ++temp;
+
+		};
+		buttonb.onclick = function ()
+		{
+			//alert('button-b');
+			var x = document.getElementById('counter-b').innerHTML;
+			var temp = new Number(x);
+			document.getElementById('counter-b').innerHTML = ++temp;
+			buttona.onclick();
+		};
+	};
+  */
+ 
+  window.onload = function ()
+  {
+	  document.getElementById('my-form').onsubmit = function()
+	  {
+		  var pass = document.getElementById('pass').value;
+		  var passCheck = document.getElementById('pass-check').value;
+		  
+		  if(pass == passCheck)
+			  {
+			  alert('성공');
+			  }
+		  else
+			  {
+			  alert('실패');
+			  return false;  
+			  }
+		
+	  };
+  };
+</script>
+<title>Insert title here</title>
+</head>
+<body>
+<form id="my-form">
+	<label for="name">이름</label><br/>
+	<input type = "text" name = "name" id="name" value = "aaaa"> <br/>
+	<label for="pass">비밀번호</label><br/>
+	<input type = "password" name = "pass" id="pass" > <br/>
+	<label for="pass-check">비밀번호 확인</label><br/>
+	<input type = "password" id="pass-check" > <br/>
+	<input type = "submit" value = "제출"> <br/>
+</form>
+
+<!-- <h1 onclick="var alpha=10; alert(alpha)">Click</h1>
+<button id = "button-a">buttonA</button>
+<button id = "button-b">buttonB</button>
+<h1>button A - <span id="counter-a">0</span></h1>
+<h1>button B - <span id="counter-b">0</span></h1>
+<h1 id="header">Click</h1> 
+-->
+
+
+
+</body>
+</html>

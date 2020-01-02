@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<style type="text/css">
+.high-light-0 {  	background : yellow; }
+.high-light-1 {  	background : orange; }
+.high-light-2 {  	background : blue; }
+.high-light-3 {  	background : green; }
+.high-light-4 {  	background : red; }
+
+</style>
+<script >
+
+var xml = '';
+xml += '<friends>';
+xml += '    <friend>';
+xml += '        <name>연하진</name>';
+xml += '        <language>Ruby</language>';
+xml += '    </friend>';
+xml += '    <friend>';
+xml += '        <name>윤명월</name>';
+xml += '        <language>Basic</language>';
+xml += '    </friend>';
+xml += '    <friend>';
+xml += '        <name>윤하린</name>';
+xml += '        <language>C#</language>';
+xml += '    </friend>';
+xml += '</friends>';
+
+/* 
+$(document).ready(function() {
+	alert('First Ready');
+});
+*/
+/* 
+$.noConflict();
+var J = jQuery;
+J(document).ready(function () {
+	J('h1').addClass(function (index) {
+		return 'high-light-' +index;
+	});
+});
+ */
+
+$(document).ready(function() {
+	/*
+	$('*').css('color','red');
+	$('#target').css('color','orange');
+	$('h2#target').css('color','blue');
+	$('.item').css('color','purple');
+	$('h1.item').css('color','purple'); 
+	$('body > *').css('color','red');
+	$('input[type"text"]').val('hello jQuery..!');
+	$('body > li').css('color','red'); // 안먹음 body안에 li가 없으므로
+	$('body   li').css('color','green');
+	*/
+	/* 
+	setTimeout(function () {
+		var value = $('select > option:selected').val();
+		alert(value);
+	},1000);
+	 */
+	
+	
+	/*
+	$('tr:odd').css('background','#F9F9F9');
+	$('tr:even').css('background','#9F9F9F');
+	$('tr:first').css('background','#000000').css('color','#FFFFFF');
+	 */
+	/*  
+	$('tr:eq(0)').css('background','#000000').css('color','white');
+	$('td:nth-child(3n+1)').css('background','#565656');
+	$('td:nth-child(3n+2)').css('background','#A9A9A9');
+	$('td:nth-child(3n)').css('background','#F9F9F9');
+	 */
+	 /* 
+	 var arr = [
+		 {			 name:'hanbit',link: 'http://hanb.co.kr'		 },
+		 {			 name:'naver',link: 'http://naver.com'		 },
+		 {			 name:'daum',link: 'http://daum.net'		 },
+		 {			 name:'paran',link: 'http://paran.com'		 }
+	 ];
+	 $.each(arr,function (index,item) {
+		 var out ='';
+		 out += '<a href="' +item.link +'">';
+		 out += '    <h1>' + item.name + '</h1>';
+		 out += '</a>';
+		 document.body.innerHTML += out;
+	 });	
+	  */
+	  
+	  //$('h1').addClass('high-light');
+	
+	  /* 
+	  $('h1').each(function (index,item) {
+		  $(item).addClass('high-light-'+index);
+		 });	
+	   */
+	  /* 
+	   var object = {name:'윤인성'};
+	   $.extend(object,{region: '서울특별시 강서구',part:'세컨드 기타'});
+	   
+	   var out = '';
+	   $.each(object, function(key,item){
+		   out += key + ':' + item + '\n';
+	   });
+	   alert(out);
+	    */
+/* 
+	$('h3:even').css({ 
+		backgroundColor: 'black', 
+		color:'white'});
+	  */
+	 /* 
+	  $('h3').filter(function (index){
+		  return index % 3 ==0;
+	  }).css({ 
+			backgroundColor: 'black', 	color:'white'});
+	   */
+	   /* 
+	  $('h1').css('backgroundColor', 'orange')
+	  .filter(':even').css('color','red');
+    */
+    /* 
+	  $('h1').css('background', 'orange')
+	  .filter(':even').css('color','white')
+	  .end().filter(':odd').css('color','red');
+     */
+    /* 
+     $('h1').eq(0).css('background', 'orange');
+     $('h1').eq(-1).css('background', 'red');
+    
+     $('h1').css('background', 'gray')
+     .add('h2').css('float', 'left');
+      */
+     
+     /*  $('h1').each(function(){
+    	  if ($(this).is('.select'))
+    		  {
+    		  $(this).css('background','orange');
+    		  }
+      });
+       */
+       
+       
+       var xmlDoc = $.parseXML(xml);
+       $(xmlDoc).find('friend').each(function () {
+    	 
+    	   var output= '';
+    	   output+= '<div>';
+    	   output+= '<h1>' + $(this).find('name').text() + '</h1>';
+    	   output+= '<p>' + $(this).find('language').text() + '</p>';
+    	   output+= '</div>';
+    	   
+    	   document.body.innerHTML += output;
+       });
+});
+
+</script>
+
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+<h1 class="select"> item - 0</h1>
+<h1> item - 1</h1>
+<h1 class="select"> item - 2</h1>
+<h1> item - 3</h1>
+<h1 class="select"> item - 4</h1>
+ -->
+
+<!-- 
+<h1> item - 0</h1>
+<h2> item - 1</h2>
+<h1> item - 2</h1>
+<h2> item - 3</h2>
+<h1> item - 4</h1>
+ -->
+<!-- 
+<h3> item - 0</h3>
+<h3> item - 1</h3>
+<h3> item - 2</h3>
+<h3> item - 3</h3>
+<h3> item - 4</h3>
+ -->
+<!-- 
+<h1> item - 0</h1>
+<h1> item - 1</h1>
+<h1> item - 2</h1>
+<h1> item - 3</h1>
+<h1> item - 4</h1>
+ -->
+<!-- 
+<table>
+	<tr>
+		<th>asd</th>		<th>zxc</th> <th>zxc</th>
+	</tr>
+	<tr>
+		<td>qwe</td>		<td>123</td> <td>123</td>
+	</tr>
+	<tr>
+		<td>qwe</td>		<td>123</td> <td>123</td>
+	</tr><tr>
+		<td>qwe</td>		<td>123</td><td>123</td>
+	</tr>
+	<tr>
+		<td>asd</td>		<td>zxc</td><td>123</td>
+	</tr><tr>
+		<td>qwe</td>		<td>123</td><td>123</td>
+	</tr>
+	<tr>
+		<td>asd</td>		<td>zxc</td><td>123</td>
+	</tr><tr>
+		<td>qwe</td>		<td>123</td><td>123</td>
+	</tr>
+	<tr>
+		<td>asd</td>		<td>zxc</td><td>123</td>
+	</tr>
+</table>
+ -->
+
+<!-- 
+<select> 
+<option value= "1"> asdf</option>
+<option value= "2"> 1234</option>
+<option value= "3"> qwer</option>
+<option value= "4">zxcv</option>
+</select>
+ -->
+<!-- 
+<input type="text" />
+<input type="password" />
+<input type="radio" />
+<input type="checkbox" />
+<input type="file" />
+<div>
+	<ul>
+		<li>apple</li>
+		<li>asdf</li>
+		<li>zxcv</li>
+		<li>1234</li>
+		<li>kjhjk</li>
+	</ul>
+</div>
+
+<h1 class="item"> Header-1 </h1>
+<h1 class="item select"> item select </h1>
+<h1 class="item"> Header-2 </h1>
+
+
+<h1> asd </h1>
+<h1 id="target"> Header-1 </h1>
+<h1>Header-2</h1>
+<h2 id="target"> h2 Header-1 </h2>
+<h2> h2 Header-2</h2>
+ -->
+</body>
+</html>

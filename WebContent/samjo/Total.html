@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+<link rel="stylesheet" type="text/css" href="bower_components/jquery.gifplayer/dist/gifplayer.css">
+<script type="text/javascript" src="bower_components/jquery.gifplayer/dist/jquery.gifplayer.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Exo&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+
+<script src="js/function.js"></script>
+<style>
+h6 {
+letter-spacing:-1px;
+font-weight: bold;
+line-height: 1.5;
+margin-top: 30px;
+margin-bottom: 2px;
+height: 50px;
+
+align-center { text-align: center; }
+}
+body.p { font-size: 15px;}
+.w3-bar-block .w3-bar-item { padding:20px}
+.section1{border-bottom : 2px solid gray; width : 100%}
+.static {
+  position:absolute;
+  background: white;
+  	width : 190px;
+  	height : 185px;
+}
+h3{font-family: 'Exo', sans-serif;}
+ul {
+	list-style: none;
+}
+
+.header {
+	position: relative;
+	max-width: 1225px;
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	list-style-type: none;
+	font-family: 'Exo', sans-serif;
+	overflow: hidden;
+}
+
+.header .store {
+	float: left;
+}
+
+.header .logo {
+	float: left;
+	margin-left: 420px;
+	max-width: 100;
+}
+
+.header .menu {
+	float: right;
+}
+
+.header li a {
+	display: block;
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 10px;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+	width: 100px;
+}
+
+.header li a:hover {
+	color: #9F9F9F;
+}
+
+ 
+.static:hover {
+  opacity:0;
+}
+
+
+</style>
+<body>
+<div class="header">
+		<ul>
+			<li class="store"><a href="Main.html"><h3>SIST.STORE</h3></a></li>
+			
+			<li class="menu"><a href="e_main.html"><h3>EVENT</h3></a></li>
+			<li class="menu"><a href="Total.html#age"><h3>AGE</h3></a></li>
+			<li class="menu"><a href="Total.html#best"><h3>HOT</h3></a></li>
+			<li class="menu"><a href="Total.html"><h3>NEW</h3></a></li>
+		</ul>
+	</div>
+
+<!-- Sidebar (hidden by default) -->
+<nav class="w3-sidebar w3-bar-block w3-card w3-top w3-xlarge w3-animate-left" style="display:none;z-index:2;width:40%;min-width:300px" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()"
+  class="w3-bar-item w3-button">Close Menu</a>
+  <a href="#food" onclick="w3_close()" class="w3-bar-item w3-button">Food</a>
+  <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">About</a>
+</nav>
+
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main w3-content w3-padding" style="max-width:800px;margin-top:80px">
+<h2>신규아이템</h2>
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/NewEmo01.PNG" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/NewEmo01.gif" alt="이모티콘1" style="width:100%">
+  	<h6>해피 뉴 이어!<br>왕 귀여운 해달이들!</h6>
+  	<p>서콩</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/NewEmo02.PNG" alt="이모티콘2">
+  	<img class = "active" src="Emoticons/NewEmo02.gif" alt="이모티콘2" style="width:100%">
+  	<h6>굴굴이와 굴 둘!</h6>
+  	<p>임임</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/NewEmo03.PNG" alt="이모티콘3">
+  	<img class = "active" src="Emoticons/NewEmo03.gif" alt="이모티콘3" style="width:100%">
+  	<h6>노란 강아지 삭아지</h6>
+  	<p>뇨끼</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/NewEmo04.PNG" alt="이모티콘4">
+  	<img class = "active" src="Emoticons/NewEmo04.gif" alt="이모티콘4" style="width:100%">
+  	<h6>에비츄와 해피 츄 이어~</h3>
+  	<p>에비츄</p>
+	</div>
+  </div>
+ 
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/NewEmo05.PNG" alt="이모티콘5">
+  	<img class = "active" src="Emoticons/NewEmo05.gif" alt="이모티콘5" style="width:100%">
+  	<h6>귀요미와 깜찍이의<br>러블리 새해 스페셜</h6>
+  	<p>quan</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/NewEmo06.PNG" alt="이모티콘6">
+  	<img class = "active" src="Emoticons/NewEmo06.gif" alt="이모티콘6" style="width:100%">
+  	<h6>삐삐 응답하라!</h6>
+  	<p>우쥬</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/NewEmo07.PNG" alt="이모티콘7">
+  	<img class = "active" src="Emoticons/NewEmo07.gif" alt="이모티콘7" style="width:100%">
+  	<h6>핵병아리의<br>사회생활 리액션</h6>
+  	<p>써노</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/NewEmo08.PNG" alt="이모티콘8">
+  	<img class = "active" src="Emoticons/NewEmo08.gif" alt="이모티콘8" style="width:100%">
+  	<h6>베이비 베어스!<br>지구 뿌셔! 우주 뿌셔!</h6>
+  	<p>위 베어 베어스</p>
+	</div>
+    	
+
+  </div>
+</div>
+<div class = "section1" id="best"></div>
+<div class="w3-main w3-content w3-padding" style="max-width:800px;margin-top:80px" >
+<h2>베스트 아이템</h2>
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/BestEmo01.PNG" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/BestEmo01.gif" alt="이모티콘1" style="width:100%">
+  	<h6>튜브는 힝구힝구</h5>
+  	<p>카카오프렌즈</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/BestEmo02.PNG" alt="이모티콘2">
+  	<img class = "active" src="Emoticons/BestEmo02.gif" alt="이모티콘2" style="width:100%">
+  	<h6>포근포근!<br>푸루와 배코</h6>
+  	<p>ⓒ 코나아이</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/BestEmo03.PNG" alt="이모티콘3">
+  	<img class = "active" src="Emoticons/BestEmo03.gif" alt="이모티콘3" style="width:100%">
+  	<h6>혀땳은 앙꼬의<br>꾸요운 일상</h6>
+  	<p>꼬맘</p>
+	</div>
+	<div class="w3-quarter">
+<a style="text-decoration:none" href="Detail1.html">
+   	<img class = "static" src="Emoticons/BestEmo04.PNG" alt="이모티콘4">
+  	<img class = "active" src="Emoticons/BestEmo04.gif" alt="이모티콘4" style="width:100%">
+  	<h6>언니티콘<br>온니밖에 없지?</h6>
+  	<p>은지</p>
+</a>
+	</div>
+  </div>
+ 
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/BestEmo05.PNG" alt="이모티콘5">
+  	<img class = "active" src="Emoticons/BestEmo05.gif" alt="이모티콘5" style="width:100%">
+  	<h6>아기오구는<br>당당구리해</h6>
+  	<p>오구</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/BestEmo06.PNG" alt="이모티콘6">
+  	<img class = "active" src="Emoticons/BestEmo06.gif" alt="이모티콘6" style="width:100%">
+  	<h6>멍청새는<br>멍청멍청해!</h6>
+  	<p>O'creative</p>
+	</div>
+	<div class="w3-quarter">
+ 	<img class = "static" src="Emoticons/BestEmo07.PNG" alt="이모티콘7">
+  	<img class = "active" src="Emoticons/BestEmo07.gif" alt="이모티콘7" style="width:100%">
+  	<h6>조르기 대마왕<br>떼쟁이</h6>
+  	<p>떼쟁이</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/BestEmo08.PNG" alt="이모티콘8">
+  	<img class = "active" src="Emoticons/BestEmo08.gif" alt="이모티콘8" style="width:100%">
+  	<h6>늬에시 패밀리</h6>
+  	<p>철새</p>
+	</div>
+    	
+
+  </div>
+</div>
+<div class = "section1" id="age"></div>
+
+  <div class="w3-main w3-content w3-padding" style="max-width:800px;margin-top:80px" >
+<h2>연령별 베스트</h2>
+  <!-- First Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+	<div class="w3-quarter">
+  
+  	<img class = "active" src="Emoticons/10대.jpg" alt="이모티콘1" style="width:100%">
+ 	
+	</div>
+	<div class="w3-quarter">
+<a  style="text-decoration:none" href="Detail2.html">
+   	<img class = "static" src="Emoticons/age10_1.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age10_1.gif" alt="이모티콘1" style="width:100%">
+  	<h6>삐롱삐롱!<br>새내기삐롱이</h6>
+  	<p>삐롱이</p>
+</a>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/age10_2.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age10_2.gif" alt="이모티콘1" style="width:100%">
+ 	<h6>이과티콘</h6>
+  	<p>메밀/몽구</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/age10_3.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age10_3.gif" alt="이모티콘1" style="width:100%">
+  	<h6>어린친구들 잘부탁해요</h6>
+  	<p>5:23</p>
+	</div>
+  
+  </div>
+  <div class = "section2"></div>
+  <!-- Second Photo Grid-->
+  <div class="w3-row-padding w3-padding-16 w3-center">
+	<div class="w3-quarter">
+  	
+  	<img class = "active" src="Emoticons/20대.png" alt="이모티콘1" style="width:100%">
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/age20_1.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age20_1.gif" alt="이모티콘1" style="width:100%">
+ 	<h6>요기~토리랑 포 나왔쪄!</h6>
+  	<p>토리&포</p>
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/age20_2.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age20_2.gif" alt="이모티콘1" style="width:100%">
+ 	<h6>나으사랑스런 울애긔</h6>
+  	<p>다르</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/age20_3.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age20_3.gif" alt="이모티콘1" style="width:100%">
+  	<h6>사랑에 빠진아이!</h6>
+  	<p>완씨</p>
+	</div>
+    	
+
+  </div>
+   <div class = "section2"></div>
+   <div class="w3-row-padding w3-padding-16 w3-center">
+	<div class="w3-quarter">
+  	<img class = "active" src="Emoticons/30대.png" alt="이모티콘1" style="width:100%">
+ 	
+	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/age30_1.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age30_1.gif" alt="이모티콘1" style="width:100%">
+  	<h6>우리딸사랑해~</h6>
+  	<p>연서</p>
+  	</div>
+	<div class="w3-quarter">
+  	<img class = "static" src="Emoticons/age30_2.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age30_2.gif" alt="이모티콘1" style="width:100%">
+  	<h6>트루러브</h6>
+  	<p>다르</p>
+	</div>
+	<div class="w3-quarter">
+   	<img class = "static" src="Emoticons/age30_3.jpg" alt="이모티콘1">
+  	<img class = "active" src="Emoticons/age30_3.gif" alt="이모티콘1" style="width:100%">
+  	<h6>퇴준생티콘</h6>
+  	<p>김나무</p>
+	</div>
+    	
+
+  </div>
+
+
+ 
+  <!-- Footer -->
+ 
+
+<!-- End page content -->
+</div>
+<div class = "section1"></div>
+<script>
+// Script to open and close sidebar
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+}
+ 
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+}
+unction GifPlayer(preview, options){
+	this.previewElement = preview;
+	this.options = options;
+	this.animationLoaded = false;
+}
+
+</script>
+
+</body>
+</html>
+
+
+

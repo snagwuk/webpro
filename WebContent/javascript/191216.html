@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+var interval = setInterval(function () {
+	
+	//alert ('<p>' + new Date() + '</p>');
+	console.log ('<p>' + new Date() + '</p>');
+},1000);
+
+setTimeout(function(){
+	clearInterval(interval);
+	
+},10000);
+
+
+
+var URI = 'http://hanb.co.kr?test=한글입니다.';
+
+var out = '';
+out += '*escape()\n'
+out += escape(URI) + '\n\n';
+out += '*encodeURI()\n'
+out += encodeURI(URI) + '\n\n';
+out += '*encodeURIComponent()\n'
+out += encodeURIComponent(URI) + '\n\n';
+	
+//alert(out);
+console.log(out);
+
+
+var willeval = '';
+willeval += 'var number = 10;';
+willeval += 'alert(number);';
+
+eval(willeval);
+
+
+var number = 1/0;
+alert (number + ':' + isFinite(number));
+
+
+var v = -10 / 0;
+if (v == Infinity)
+	{
+	alert ('infinity');
+	}
+else
+	{
+	alert('infinity 아닙니다.');
+	}
+
+
+
+if (NaN == NaN)
+{
+alert ('NaN == NaN');
+}
+else
+{
+alert('NaN !== NaN');
+}
+
+
+*var n = 'a';
+if (isNaN(n))
+{
+alert ('NaN임');
+}
+else
+{
+alert('숫자임');
+}
+
+var won = '1000원';
+var dollar = '1.5$';
+alert(Number(won) + ': ' + Number(dollar));
+alert(parseInt(won) + ':' + parseInt(dollar));
+alert(parseFloat(won) + ':' + parseFloat(dollar));
+
+alert(parseInt('0x273'));
+alert(parseInt('273'));
+alert(parseInt('0273'));
+alert(parseInt('FF',16));
+alert(parseInt('52',10));
+alert(parseInt('11',8));
+alert(parseInt('10',2));
+
+var a = parseInt("10");
+var b = parseInt("10.00");
+var c = parseInt("10.33");
+var d = parseInt("34 45 66");
+var e = parseInt("   60   ");
+var f = parseInt("40 years");
+var g = parseInt("he was 40");
+var h = parseInt("5,000,000");
+
+alert('a:'+a);
+alert('b:'+b);
+alert('c:'+c);
+alert('d:'+d);
+alert('e:'+e);
+alert('f:'+f);
+alert('g:'+g);
+alert('h:'+h);
+
+alert(typeof([]));
+
+var p = {
+		제품명 : '7D 건조 망고',
+		유형 : '당절임',
+		성분 : '망고, 설탕,메타중아황산나트륨, 치자황색소',
+		원산지 : '필리핀'
+};
+alert(p);
+
+var obj = 
+	{
+		'with space' : 273,
+		'with=!@#$%^&*()_+' : 52
+	};
+
+var obj = 
+	{
+		number : 273,
+		string : 'rinIantta',
+		boolean : true,
+		array : [52,273,103,32],
+		method : function() {}
+		
+	};
+	alert(typeof(obj.string));
+
+	var per = {
+			name : '윤인성',
+			eat : function (food) 
+			{
+				alert(this.name  + '이 ' + food + '을/를 먹습니다.');
+			}
+			
+	};
+	per.eat('밥');
+
+var product = 
+	{
+		name : 'microsoft visual studio 2012 ultimate',
+		price : '15,000,000원',
+		language : '한국어',
+		supportOS : 'win 32/64',
+		sybscription : true
+	};
+
+var o = '';
+for (var key in product)
+	{
+	o += '●' + key + ': ' + product[key] + '\n';
+	}
+alert(o);
+
+var out = '';
+for (var key in window)
+	{
+	out += '●' + key + ': ' + window[key] + (typeof(window[key]))+ '\n';
+	}
+alert(out);
+
+
+var out = '';
+var stu = {
+	이름 : '연하진',
+	국어 : 92, 수학:98,
+	영어: 96, 과학: 98 
+};
+
+out += "'이름' in stu : " + ('이름' in stu) + '\n'; 
+out += "'성별' in stu : " + ('성별' in stu) + '\n'; 
+alert(out);
+
+var out = '';
+var stu = {
+	이름 : '연하진',
+	국어 : 92, 수학:98,
+	영어: 96, 과학: 98 
+};
+out += '이름 : ' + stu.이름 + '\n';
+out += '총점 : ' + (stu.국어+stu.수학+stu.영어+stu.과학) + '\n';
+alert(out);
+
+
+var stu = {
+	이름 : '연하진',
+	국어 : 92, 수학:98,
+	영어: 96, 과학: 98 
+};
+var out = '';
+with(stu)
+{
+	out += '이름 : ' + 이름 + '\n';
+	out += '총점 : ' + (국어+수학+영어+과학) + '\n';
+	}
+
+alert(out);
+
+var stu = {};
+
+stu.이름 = '윤인성';
+stu.취미 = '악기';
+stu.특기 = '프로그래밍';
+stu.장래희망 = '생명과학자' ;
+
+
+stu.toString = function() {
+	var out = '';
+	for (var key in this) 
+		{
+		if(key != 'toString')
+			{
+			out += key + '\t' + this[key] + '\n';
+			}
+		}
+	return out;
+};
+alert(stu.toString());
+
+
+
+
+
+
+var students = [];
+students.push({ 이름: '윤인성', 국어: 87, 수학: 98, 영어: 88, 과학: 95 });
+students.push({ 이름: '연하진', 국어: 92, 수학: 98, 영어: 96, 과학: 98 });
+students.push({ 이름: '구지연', 국어: 76, 수학: 96, 영어: 94, 과학: 90 });
+students.push({ 이름: '나선주', 국어: 98, 수학: 92, 영어: 96, 과학: 92 });
+students.push({ 이름: '윤아린', 국어: 95, 수학: 98, 영어: 98, 과학: 98 });
+students.push({ 이름: '윤명월', 국어: 64, 수학: 88, 영어: 92, 과학: 92 });
+students.push({ 이름: '김미화', 국어: 82, 수학: 86, 영어: 98, 과학: 88 });
+students.push({ 이름: '김연화', 국어: 88, 수학: 74, 영어: 78, 과학: 92 });
+students.push({ 이름: '박아현', 국어: 97, 수학: 92, 영어: 88, 과학: 95 });
+students.push({ 이름: '서준서', 국어: 45, 수학: 52, 영어: 72, 과학: 78 });
+
+for(var i in students)
+	{
+	students[i].getSum = function() 
+	{
+		return this.국어 + this.수학 + this.영어  + this.과학;
+	};
+	students[i].getAverage = function() 
+	{
+		return this.getSum() / 4;
+	};
+	
+	}
+
+var out = '이름\t총점\t평균\n';
+for(var i in students)
+	{
+	with (students[i])
+	{
+		out += 이름 + '\t' + getSum() + '\t' + getAverage() + '\n';
+	}
+	}
+	alert(out);
+	
+	*/	
+	function makeStudent(name,korean,math,english,science)
+	{
+		var willReturn = {
+				이름 :name, 국어 :korean , 수학 :math , 영어 : english, 과학:science,
+				getSum : function() {
+					return this.국어 + this.수학 + this.영어  + this.과학;
+				},
+				getAverage : function() { 
+					return this.getSum() / 4;
+				},
+				toString : function() {
+					return this.이름 + '\t' + this.getSum() + '\t' + this.getAverage() + '\n';
+				}
+		};
+		return willReturn;
+		}
+	var students = [];
+	students.push(makeStudent('윤인성',  87,  98, 88,  95 ));
+	students.push(makeStudent( '연하진',  92,  98, 96, 98 ));
+	
+	var out = '이름\t총점\t평균\n';
+	for(var i in students)
+		{
+		with (students[i])
+		{
+			out += 이름 + '\t' + getSum() + '\t' + getAverage() + '\n';
+		}
+		}
+		alert(out);
+
+</script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

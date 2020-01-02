@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+/*
+var v = 0 ;
+var st = new Date().getTime();
+while(new Date().getTime() < st + 1000)
+	{v++;}
+	
+alert(v);
+
+
+
+var v = 0 ;
+do{
+	alert(v+'번째 반복문');
+	v++;
+} while (v <5);
+
+
+var st = new Date().getTime();
+
+for(var cps = 0 ; new Date().getTime() < st +1000; cps++)
+	{}
+	alert('초당 연산횟수 :' + cps); 
+
+	
+	
+var o = '';
+
+	for(var x = 0; x < 15 ; x++)
+	{
+		
+		for(var y = 0; y < 15-x ; y++)
+			o += ' ';
+		for(var z = 0; z < 2*(x+1)-1 ; z++)
+			o += '*';
+		o += '\n';
+	}
+	
+	alert(o); 
+	
+
+	
+	
+var 함수 = function() {
+var x = prompt('숫자를입력','');
+	};
+alert(함수);
+
+함수();
+var 함수 = function () {alert('함수  A');};
+var 함수 = function () {alert('함수  A');};
+
+함수();
+function 함수() {alert('함수  A');}
+function 함수() {alert('함수  B');} 
+
+
+var 함수 = function () {alert('함수  A');};
+function 함수() {alert('함수  B');}
+함수();
+
+
+alert('원래 매개변수', '추가된매개변수');
+pompt('원래매개변수');
+
+
+
+
+var arr2 = Array(10);
+var arr3 = Array(273,103,57,32);
+
+alert(arr1 + '\n' + arr2 + '\n' +arr3 );
+
+
+var arr1 = Array();
+var a = 1;
+function sumall()
+{
+	alert(typeof(arguments) + ':' + arguments.length);
+}
+	sumall(a);
+	
+
+function sumall()
+{
+	var output = 0;
+	for(var i = 0 ; i < arguments.length; i++)
+		{
+		output += arguments[i];		
+		}
+	return output;
+}
+alert(sumall(1,2,3,4,5,6,7,8,9));
+
+function array2() 
+{
+	var length = arguments.length;
+	if(length == 0)
+	{
+		return ' ' ;
+	}  
+	else if (length == 1)
+	{
+		var t = '';
+		for(var i = 0; i < arguments[0]; i++)
+			t += ',';
+		return t;
+	}
+	else
+	{
+		var t = '';
+		for(var i = 0; i < length; i++)
+		{	
+			t += arguments[i];	
+			if( i != length -1)
+				t += ',';
+		}
+		return t;	
+	}
+}
+alert(array2());
+alert(array2(5));
+alert(array2(1,2,3,4,5));
+
+
+
+function returnfuction()
+{
+	alert('문장A');
+	return;
+	alert('문장B');
+	}
+var a = returnfuction();
+
+alert(typeof(a));
+
+
+function sq(x ) {return x* x;}
+
+function pythagoras(width,height)
+{
+	return Math.sqrt(sq(width) + sq(height));
+	
+	}
+//alert(pythagoras(3,4));
+
+function sqz(width,height,hypo ) 
+{
+if (width*width + height*height == hypo*hypo)
+	{return 	true;}
+else 
+	{false;}
+}
+
+alert(sqz(3,4,5));
+
+
+
+
+function pyta(w,h)
+{
+	function sq(x){
+	return x*x;
+	}
+	return Math.sqrt(sq(w) + sq(h));
+	}
+alert(pyta(3,4));
+
+
+
+
+function calltentimes(callback)
+{
+	for(var i  = 0 ; i < 10 ; i++)
+		{
+		callback();
+		}
+	}
+	
+	var test = function()
+	{
+		alert('함수호출');
+	}
+	calltentimes(test);
+
+	
+	
+	
+	
+	
+function returnFuntion()
+	{
+		return function() {
+			alert('Hello function');
+		};
+	}
+	returnFuntion()();
+	
+
+	
+function test (name)
+	{
+		var ou = 'Hello' + name + '..!';
+	
+	}
+	alert(ou);
+	*/	
+	function test (name)
+	{
+		var ou = 'Hello' + name + '..!';
+		return function()
+		{
+			alert(ou);
+		};
+	}
+	
+var t1 = test('web');
+var t2 = test('javascript');
+t1();
+t2();
+
+	
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+=
+</body>
+</html>

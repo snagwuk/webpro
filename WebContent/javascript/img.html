@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script>
+   function nextRandomInteger(limit) {
+      return Math.round(Math.random() * limit);
+   }
+
+   // 랜덤한 이미지 넣는 함수
+   
+   function randomAlphabet() {
+      var alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      return alphabet.charAt(nextRandomInteger(25));
+   }
+   
+   function randomImage() {
+      var image = ['star.png','smile.png','dia.png'];
+      return image[nextRandomInteger(2)];
+   }
+   
+
+   function randomSpeed(maxSpeed) {
+      return Math.random() * maxSpeed - Math.random() * maxSpeed;
+   }
+</script>
+
+<!-- 생성자 -->
+<script>
+   var canvasWidth = 700;
+   var canvasHeight = 400;
+
+   function MovingText() {
+      this.x = nextRandomInteger(canvasWidth);
+      this.y = nextRandomInteger(canvasHeight);
+      this.vx = randomSpeed(10);
+      this.vy = randomSpeed(10);
+
+      this.ob = document.createElement('img');
+      this.ob.src = randomImage();
+      this.ob.width = 30;
+      this.ob.height = 30;
+      this.ob.style.position = 'absolute';
+      this.ob.onmouseover = function () {
+         //alert('ok');
+         document.body.removeChild(this);
+      }
+
+      document.body.appendChild(this.ob);
+   }
+</script>
+
+<script>
+   MovingText.prototype.move = function() {
+      if (this.x < 0 || this.x > canvasWidth) {
+         this.vx *= -1;
+      }
+      if(this.y < 0 || this.y > canvasHeight) {
+         this.vy *= -1;
+      }
+      
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      this.ob.style.left = this.x + 'px';
+      this.ob.style.top = this.y + 'px';   
+   };
+</script>
+
+<script>
+window.onload = function () {
+   // 이미지 넣을 배열 
+   var movingTexts = [];
+   
+   for(var i =0; i<100;i++) {
+      movingTexts.push(new MovingText());
+   }
+   
+   setInterval(function() {
+      for(var i in movingTexts) {
+      movingTexts[i].move();
+   }
+   }, 1000/30);
+};
+</script>
+</head>
+<body>
+
+</body>
+</html>
